@@ -20,8 +20,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fibroscan_device_serial_no = set_check($conn->real_escape_string($_POST['fibroscan_device_serial_no']));
     $scan_done = set_check($conn->real_escape_string($_POST['scan_done']));
     $is_verified = 0; // By default unverified
+    $inst_addr = set_check($conn->real_escape_string($_POST['inst_addr']));
 
-    $sql = "insert into examinee (first_name, last_name, email, institution, initial_training_date, refresher_training_date, fibroscan_device_serial_no, scan_done, is_verified) values ($first_name, $last_name, $email, $institution, $initial_training_date, $refresher_training_date, $fibroscan_device_serial_no, $scan_done, $is_verified)";
+    $sql = "insert into examinee (first_name, last_name, email, institution, initial_training_date, refresher_training_date, fibroscan_device_serial_no, scan_done, is_verified, inst_addr) values ($first_name, $last_name, $email, $institution, $initial_training_date, $refresher_training_date, $fibroscan_device_serial_no, $scan_done, $is_verified, $inst_addr)";
 
     $result = $conn->query($sql);
     if($result) {
@@ -56,19 +57,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="input-items">
                     <label for="last_name">Last Name: </label>
-                    <input type="text" id="username" name="last_name" placeholder="">
+                    <input type="text" id="username" name="last_name" placeholder="" require>
                 </div>
                 <div class="input-items">
                     <label for="username">Email: </label>
                     <input type="email" id="username" name="email" placeholder="" required>
                 </div>
                 <div class="input-items">
-                    <label for="institution">Institution: </label>
-                    <input type="text" id="username" name="institution" placeholder="">
+                    <label for="institution">Name of the Hospital/Institution/Clinic : </label>
+                    <input type="text" id="username" name="institution" placeholder="" required>
                 </div>
                 <div class="input-items">
-                    <label for="initial_training_date">Initial Training Date: </label>
-                    <input type="date" id="username" name="initial_training_date" placeholder="">
+                    <label for="institutionaddress">Address of the Hospital/Institution/Clinic : </label>
+                    <input type="text" id="username" name="inst_addr" placeholder="" required>
+                </div>
+                <div class="input-items">
+                    <label for="initial_training_date">Initial Training Date (Mandatory): </label>
+                    <input type="date" id="username" name="initial_training_date" placeholder="" required>
                 </div>
                 <div class="input-items">
                     <label for="refresher_training_date">Refresher_Training_Date: </label>
@@ -79,11 +84,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" id="username" name="fibroscan_device_serial_no" placeholder="">
                 </div>
                 <div class="input-items">
-                    <label for="scan_done">How Many Scan You Have Done?: </label>
+                    <label for="scan_done">The approximate number of scans done in the last 6 months: </label>
                     <input type="text" id="username" name="scan_done" placeholder="">
                 </div>
                 <div class="submits">
-                    <button class="btn btn-blue">login</button>
+                    <button class="btn btn-blue">Register</button>
                 </div>
             </form>
         </div>
