@@ -60,6 +60,7 @@ $data = retrive_result($examinee_id);
     </div>
     <!-- banner end -->
 
+<div class="container">
     <!-- question box -->
     <?php if($data != false) : ?>
     <?php foreach($data as $item) : ?>
@@ -103,10 +104,15 @@ $data = retrive_result($examinee_id);
     <?php endforeach; ?>
     <?php endif; ?>
     <!-- question box end -->
-
+</div>
 
     <script src="assets/js/jquery.min.js"></script>
 
 </body>
 
 </html>
+
+<?php
+
+
+?>

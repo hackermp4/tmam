@@ -1,4 +1,8 @@
-<?php include('crud/topics.php'); ?>
+<?php 
+    session_start();
+    include('crud/topics.php');
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -130,8 +134,11 @@
             function checkReadTopics() {
                 let all_topics = document.querySelectorAll('.magic-topic');
                 let all_read_topics = document.querySelectorAll('.topic-disable');
+                console.log(all_topics.length);
 
-                if (all_topics.length == all_read_topics.length) {
+                if (all_topics.length <= 0) {
+                    $('.proceed-btn').removeClass('show-popup');
+                }else if(all_topics.length == all_read_topics.length){
                     $('.proceed-btn').addClass('show-popup');
                 }
             }
@@ -145,3 +152,12 @@
 </body>
 
 </html>
+
+
+<?php
+    if(isset($_SESSION['messages'])) {
+        $messages = $_SESSION['messages'];
+        echo "<script type='text/javascript'>alert('$messages');</script>";
+        unset($_SESSION['messages']);
+    }
+?>

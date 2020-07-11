@@ -1,5 +1,10 @@
 <?php
 
+/* Admin seassion check */
+session_start();
+if(!isset($_SESSION['admin_id'])) {
+    header('Location: login.php');
+}
 
 include('../crud/middleware/database.php');
 require_once('functions.php');

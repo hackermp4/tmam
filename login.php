@@ -19,7 +19,7 @@ if(isset($_POST['email'])) {
             }
         }
     } else {
-        echo "<h3>Email not registered</h3>";
+        $_SESSION['messages'] = "Email not registered!";
     }
 }
 
@@ -57,3 +57,11 @@ if(isset($_POST['email'])) {
     <script src="../assets/js/jquery.min.js"></script>
 </body>
 </html>
+
+<?php
+    if(isset($_SESSION['messages'])) {
+        $messages = $_SESSION['messages'];
+        echo "<script type='text/javascript'>alert('$messages');</script>";
+        unset($_SESSION['messages']);
+    }
+?>

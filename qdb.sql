@@ -62,7 +62,7 @@ CREATE TABLE `choices` (
   PRIMARY KEY (`id`),
   KEY `question_id` (`question_id`),
   CONSTRAINT `choices_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `choices` (
 
 LOCK TABLES `choices` WRITE;
 /*!40000 ALTER TABLE `choices` DISABLE KEYS */;
-INSERT INTO `choices` VALUES (7,9,'nothing','anything','something','everything','','','something'),(8,10,'sdfsdf','fafsd','fsdfsd','sdfsdfsf','','','fsdfsd');
+INSERT INTO `choices` VALUES (7,9,'nothing','anything','something','everything','','','nothing'),(8,10,'sdfsdf','fafsd','fsdfsd','sdfsdfsf','','','sdfsdf'),(9,11,'No','Yes','A little','Know but no experience','','','Know but no experience'),(11,16,'Nope','Yes','No never','Yes always','','','Yes'),(12,17,'FUck o','fjsdlfjsd ','dsfjsdfj','Albatraoz','','','Albatraoz'),(13,18,'wanna get fucked?','I hate you','I love u too','FUckl off','','','FUckl off');
 /*!40000 ALTER TABLE `choices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `examinee` (
   `is_verified` tinyint(4) DEFAULT NULL,
   `inst_addr` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `examinee` (
 
 LOCK TABLES `examinee` WRITE;
 /*!40000 ALTER TABLE `examinee` DISABLE KEYS */;
-INSERT INTO `examinee` VALUES (1,'Jonathon','halim','jonathon@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(2,'Abdur','Jabbar','jabbar@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(3,'Barkat','Ali','barkat@gmail.com','Barkat Elmi Institution','2021-07-20',NULL,'ERD15412154XX55',NULL,1,NULL),(4,'Asadullah','Galib','asadullah@gmail.com',NULL,NULL,'2021-06-22','EP669TWARPHEXAL',100,1,NULL),(5,'Intishar',NULL,'ishmam@gmail.com',NULL,'2020-06-09',NULL,NULL,1000,1,NULL),(6,'dsfs ','fsfsfsf','fsdfs@fsedf.sfsdf','fsdfsf',NULL,NULL,NULL,NULL,0,NULL),(7,'ishmam','fsdfjsfjskdf j','ishmam@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(8,'Hakmaola',NULL,'hakmaola@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(9,'Samurain','Axe','samurain@gmail.com','Samurain road, Samurain.','2020-07-07',NULL,'565656d56as5d6asdasd',454,1,'NULL'),(10,'Harkiulis','Harkalas','harkalas@gmail.com','Harkala institution','2020-07-15','2020-07-22','dfsdfsdf545f',454,1,'Harkala road');
+INSERT INTO `examinee` VALUES (1,'Jonathon','halim','jonathon@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(2,'Abdur','Jabbar','jabbar@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(3,'Barkat','Ali','barkat@gmail.com','Barkat Elmi Institution','2021-07-20',NULL,'ERD15412154XX55',NULL,1,NULL),(4,'Asadullah','Galib','asadullah@gmail.com',NULL,NULL,'2021-06-22','EP669TWARPHEXAL',100,1,NULL),(5,'Intishar',NULL,'ishmam@gmail.com',NULL,'2020-06-09',NULL,NULL,1000,1,NULL),(6,'dsfs ','fsfsfsf','fsdfs@fsedf.sfsdf','fsdfsf',NULL,NULL,NULL,NULL,1,NULL),(7,'ishmam','fsdfjsfjskdf j','ishmam@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(8,'Hakmaola',NULL,'hakmaola@gmail.com',NULL,NULL,NULL,NULL,NULL,1,NULL),(9,'Samurain','Axe','samurain@gmail.com','Samurain road, Samurain.','2020-07-07',NULL,'565656d56as5d6asdasd',454,1,'NULL'),(10,'Harkiulis','Harkalas','harkalas@gmail.com','Harkala institution','2020-07-15','2020-07-22','dfsdfsdf545f',454,1,'Harkala road'),(11,'Ima','Albatraoz','albatraoz@yahoo.com','BasAls Hospital Limited','2020-07-30','2020-07-02','151611fsdfdfdsfdfdsfhuhuUFDSFSD',10,1,'Basbagan, Basa mor.'),(12,'Ababossar','Chad','amabossarchar@gmail.com','amabossa','2020-07-09','2020-07-13','215405045405',NULL,1,'amabossachar'),(13,'Azman','Hakim','asman@gmail.com','azman incorporations limited','2020-07-06','2020-07-13','123456789',123,0,'Azman road, Azman');
 /*!40000 ALTER TABLE `examinee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `questions` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `question` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (9,'<p>What the hell are you waitin for?</p>'),(10,'<p>fj;sdjflksdjflkjdsfjds</p>');
+INSERT INTO `questions` VALUES (9,'<p>What the hell are you waitin for?</p>'),(10,'<p>fj;sdjflksdjflkjdsfjds</p>'),(11,'<p>Do you know how to fuck a girl?</p>'),(16,'<p>Do you know Barak Omaba?</p>'),(17,'<p>Hello there man?</p>'),(18,'<p>I love you?</p>');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +172,7 @@ CREATE TABLE `results` (
   PRIMARY KEY (`id`),
   KEY `examinee_id` (`examinee_id`),
   CONSTRAINT `results_ibfk_1` FOREIGN KEY (`examinee_id`) REFERENCES `examinee` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `results` (
 
 LOCK TABLES `results` WRITE;
 /*!40000 ALTER TABLE `results` DISABLE KEYS */;
-INSERT INTO `results` VALUES (1,2,2,0,'2020-06-23'),(2,2,0,0,'2020-06-23'),(3,2,2,1,'2020-06-23'),(4,2,0,0,'2020-06-23'),(5,5,0,0,'2020-06-23'),(6,5,0,0,'2020-06-23'),(7,8,0,0,'2020-07-03'),(8,7,0,0,'2020-07-10');
+INSERT INTO `results` VALUES (1,2,2,0,'2020-06-23'),(2,2,0,0,'2020-06-23'),(3,2,2,1,'2020-06-23'),(4,2,0,0,'2020-06-23'),(5,5,0,0,'2020-06-23'),(6,5,0,0,'2020-06-23'),(7,8,0,0,'2020-07-03'),(8,7,0,0,'2020-07-10'),(9,7,1,1,'2020-07-11'),(10,7,1,1,'2020-07-11'),(11,7,0,0,'2020-07-11'),(12,7,0,1,'2020-07-11'),(13,7,0,1,'2020-07-11'),(14,7,0,1,'2020-07-11'),(15,7,0,1,'2020-07-11'),(16,7,0,1,'2020-07-11'),(17,7,33,1,'2020-07-11'),(18,7,16,0,'2020-07-11'),(19,7,33,1,'2020-07-11'),(20,7,100,1,'2020-07-11');
 /*!40000 ALTER TABLE `results` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES (5,'By the end of the lesson we all come to know that','<p>Is a word that means a sporitual things.</p>\r\n<p><img src=\"http://localhost/tproject/admin/uploads/100521718_3724171264261072_3130566597941395456_o.jpg\" alt=\"\" width=\"196\" height=\"196\" /></p>'),(6,'dfsdfsdfsdf','<p>fs</p>\r\n<p>fs</p>\r\n<p>f</p>\r\n<p>sf</p>\r\n<p><img src=\"http://localhost/tproject/admin/uploads/83189048_381562509375837_3347907409296228352_n.jpg\" alt=\"\" width=\"960\" height=\"638\" /></p>'),(7,'dfsdf','<p>sfsfsf</p>\r\n<p>sf</p>\r\n<p>sdf</p>\r\n<p>sdf</p>\r\n<p><img src=\"http://localhost/tproject/admin/uploads/83189048_381562509375837_3347907409296228352_n.jpg\" alt=\"\" width=\"295\" height=\"196\" /></p>');
+INSERT INTO `topics` VALUES (5,'By the end of the lesson we all come to know that','<p>Is a word that means a sporitual things.</p>\r\n<p><img src=\"http://localhost/tproject/admin/uploads/100521718_3724171264261072_3130566597941395456_o.jpg\" alt=\"\" width=\"196\" height=\"196\" /></p>'),(6,'dfsdfsdfsdf','<p>fs</p>\r\n<p>fs</p>\r\n<p>f</p>\r\n<p>sf</p>\r\n<p><img src=\"http://localhost/tproject/admin/uploads/83189048_381562509375837_3347907409296228352_n.jpg\" alt=\"\" width=\"960\" height=\"638\" /></p>');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -247,4 +247,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-11  2:45:13
+-- Dump completed on 2020-07-11 18:32:43

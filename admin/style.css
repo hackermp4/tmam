@@ -8,19 +8,42 @@
 }
 
 :root {
-    --th-bg-blue: blue;
-    --th-bg-green: green;
-    --th-bg-danger: red;
+    --th-bg-blue: #0bb4c8;
+    --th-bg-green: #58b05c;
+    --th-bg-danger: #eb4844;
+    --th-bg-light:#eeeeee;
+    --th-bg-primary:#9c27b0;
 
-    --text-blue: blue;
-    --text-green: green;
-    --text-danger: red;
+    --text-blue: #0bb4c8;
+    --text-green: #58b05c;
+    --text-danger: #eb4844;
     --text-white: white;
     --text-dark: #34495E;
 }
 
 body {
     overflow: hidden;
+}
+
+th {
+    text-align: left;
+    font-size: 15px;
+}
+
+td {
+    font-size: 14px;
+    color: #777;
+    margin-left: 15px;
+}
+
+tr {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+table {
+    width: 100%;
 }
 
 
@@ -59,6 +82,30 @@ body {
 
 .bg-blue {
     background-color: var(--th-bg-blue);
+}
+
+.bg-green {
+    background-color: var(--th-bg-green)!important;
+}
+
+.bg-red {
+    background-color: var(--th-bg-danger)!important;
+}
+
+.bg-orange{
+    background-color: #fc950c!important;
+}
+
+.bg-light{
+    background-color: var(--th-bg-light)!important;
+}
+
+.text-green {
+    color: var(--th-bg-green)!important;
+}
+
+.text-red {
+    color: var(--th-bg-danger)!important;
 }
 
 .container {
@@ -174,6 +221,48 @@ h2.form-title {
     color: var(--text-danger);
 }
 
+.form-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.login-form.register-form {
+    padding: 0px;
+    border-radius: 0;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+}
+
+.login-form.register-form form {
+    width: 90%!important;
+    max-width: 75%;
+}
+
+.register-form .input-items {
+    flex-basis: 49%;
+}
+
+.register-form .input-items input {
+    border: none;
+    border-bottom: 1px solid #777;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+.register-form .input-items input:focus{
+    outline: none;
+}
+
+.form-banner img {
+    width: 100%;
+    height: 100%;
+}
+
+.form-banner {
+    height: 250px;
+}
+
 
 /* =============== password-recovery.html =============== */
 .password-recovery-form .input-items input {
@@ -190,8 +279,8 @@ h2.form-title {
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.5);
     border-radius: 100%;
 }
@@ -238,7 +327,7 @@ h2.form-title {
 .user-dropdown {
     position: absolute;
     top: 103%;
-    left: 0;
+    left: -15px;
     width: 175px;
     background: white;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.5);
@@ -279,9 +368,10 @@ h2.form-title {
 
 /*========= sidebar ========= */
 #sidebar {
-    background-color: var(--th-bg-blue);
+    background-color: var(--text-white);
     height: auto;
     width: 20%;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
 }
 
 #main-menu {
@@ -294,9 +384,8 @@ h2.form-title {
 }
 
 #main-menu li a {
-    color: var(--text-white);
+    color: var(--text-dark);
     text-decoration: none;
-    border-bottom: 1px solid var(--text-white);
     font-size: 14px;
     padding: 10px 20px;
     padding-bottom: 10px;
@@ -308,18 +397,18 @@ h2.form-title {
 
 
 #main-menu li:hover>a {
-    background-color: var(--text-white);
-    color: var(--text-blue);
+    background-color: var(--th-bg-primary);
+    color: var(--text-white) !important;
     transition: 0.4s all;
 }
 
 .menu-active {
-    background-color: var(--text-white);
-    color: var(--text-blue) !important;
+    background-color: var(--th-bg-primary);
+    color: var(--text-white) !important;
 }
 
 .menu-active i {
-    color: var(--text-blue) !important;
+    color: var(--text-white) !important;
 }
 
 #main-menu li a i {
@@ -360,19 +449,26 @@ ul.sub-menu li a {
     height: 100vh;
     padding-bottom: 100px;
     overflow-y: auto;
+    background-color: var(--th-bg-light);
+}
+
+.dashboard{
+    background-color: var(--th-bg-light)!important;
 }
 
 h3.section-heading {
-    background: var(--th-bg-blue);
-    color: var(--text-white);
+    color: var(--text-green);
     text-transform: uppercase;
     padding: 15px 30px;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
+    margin-bottom: 50px;
 }
 
 .wrapper {
     padding: 30px;
+    background: white;
+    margin: 0 15px;
 }
 
 .wrapper p {
@@ -465,7 +561,7 @@ h3.section-heading {
     flex-basis: 23%;
     margin-bottom: 20px;
     padding: 30px;
-    background: #f0f0f0;
+    background: var(--text-white);
     border-radius: 10px;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
     text-align: center;
@@ -478,6 +574,55 @@ h4.card-title {
     margin-bottom: 30px;
 }
 
+.card-contents h2 {
+    color: #606060;
+    font-size: 45px;
+}
+
+.card-contents p {
+    font-size: 12px;
+    font-weight: 300!important;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--text-dark)!important;   
+}
+
+.card-divider {
+    height: 2px;
+    background: #ccc;
+}
+
+.card-item .details {
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: left;
+    color: #8ddce5;
+    display: inline-block;
+}
+
+.wild{
+    text-align: left;
+}
+
+.card-contents {
+    text-align: center;
+}
+
+.card-top-items .icon {
+    font-size: 30px;
+    padding: 20px 30px;
+    background: #fc950c;
+    color: var(--text-white);
+    position: relative;
+    top: -40px;
+    left: -20px;
+}
+
+.card-top-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .card-item p {
     font-size: 15px;
@@ -490,6 +635,62 @@ h4.card-title {
     color: var(--text-dark);
 }
 
+.card-item.special {
+    background: #0bb4c8;
+    color: var(--text-white);
+    height: 170px;
+}
+
+.card-item.special p {
+    text-align: right;
+    text-transform: uppercase;
+    color: var(--text-white);
+    margin: 0;
+    margin-top: 30px;
+}
+
+.card-item.special h2 {
+    text-transform: uppercase;
+    color: var(--text-white);
+    text-align: right;
+}
+
+.card-item.special {
+    padding: 50px;
+}
+
+.card-item.widget{
+    flex-basis: 30%!important;
+}
+
+.card-item.wild.widget .card-top-items {
+    padding: 40px 20px;
+    border-radius: 6px;
+    position: relative;
+    top: -40px;
+    justify-content: center;
+}
+
+.card-item.wild.widget .card-contents{
+    text-transform: uppercase;
+}
+
+.card-item.wild.widget .card-contents h2{
+    color: var(--text-white)!important;
+}
+
+.card-item.wild.widget .card-contents p{
+    color: var(--text-white)!important;
+    font-weight: 800!important;
+}
+
+.card-item.wild.widget .details {
+    padding: 3px 14px;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+}
 
 /* ================  new request ===========*/
 /* The container must be positioned relative: */

@@ -1,5 +1,6 @@
 <?php
 
+
 require_once('database.php');
 $conn = database();
 
@@ -19,6 +20,7 @@ function is_verified($url) {
     if($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             if($row['is_verified'] == 0) {
+                $_SESSION["messages"] = "You are not verified yet!, Please wait untill an Admin verify you.";
                 header("Location: $url"); // Redirect because unverified
             }
         }

@@ -1,4 +1,11 @@
 <?php
+
+/* Admin seassion check */
+session_start();
+if(!isset($_SESSION['admin_id'])) {
+    header('Location: login.php');
+}
+
 include('../crud/admin/topicsInsert.php');
 require_once('functions.php');
 ?>
@@ -8,7 +15,7 @@ require_once('functions.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Login</title>
+    <title>Admin | Add Topic</title>
 
     <!-- fontawesome css -->
     <link rel="stylesheet" href="css/fontawesome.css">

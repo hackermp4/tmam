@@ -26,13 +26,17 @@ if(isset($_POST)) {
 
     // --------
     $marks = 0;
+    $quesc = $conn->query("select count(id) as value from questions") or die($conn->error);
+    $resc = $quesc->fetch_assoc();
+    $per_question_marks = 100 / $resc['value'];
+    $pass_marks = floor(($resc['value'] * $per_question_marks) * 0.33);
 
     foreach($_POST as $key=>$value) {
         foreach($value as $key=>$value) {
             foreach($data as $item) { // Matching mechanism
                 if($item['question_id'] == $value['id']) {
                     if($item['answer'] == $value['answer']) {
-                        $marks++; // answer matched and marks plus
+                        $marks = $marks + $per_question_marks; // answer matched and marks plus
                     }
                 }
             }
@@ -40,7 +44,7 @@ if(isset($_POST)) {
     }
 
     // -------
-    $pass_marks = 1;
+    $marks = floor($marks);
     $submit_date = date("Y-m-d");
     if($marks >= $pass_marks) {
         $passed = 1;

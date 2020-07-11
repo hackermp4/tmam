@@ -6,10 +6,18 @@ if(!isset($_SESSION['admin_id'])) {
     header('Location: login.php');
 }
 
-require_once('../crud/topics.php');
-require_once('../crud/admin/topicsInsert.php');
+require_once('../crud/middleware/database.php');
 require_once('functions.php');
+$conn = database();
 
+$result = $conn->query("select distinct(examinee.id), examinee.first_name, examinee.email from results inner join examinee on examinee.id = results.examinee_id where results.passed = 0") or die($conn->error);
+
+if($result->num_rows > 0) {
+    $data = [];    
+    while($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+}
 ?>
 
 
@@ -18,7 +26,7 @@ require_once('functions.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Topics</title>
+    <title>Admin | Registered</title>
 
     <!-- fontawesome css -->
     <link rel="stylesheet" href="css/fontawesome.css">
@@ -42,42 +50,39 @@ require_once('functions.php');
 
             <!-- dashboard area -->
             <div class="dashboard-area">
-                <h3 class="section-heading">Topics</h3>
+                <h3 class="section-heading">Total Passed</h3>
 
                 <!-- wrapper -->
                 <div class="wrapper">
-                    <div class="topics-heading">
-                        <a href="add-topic.php" class="btn btn-blue">Add New Topic</a>
-                    </div>
+                    
                     <div class="topics-table">
                         <div class="tbl-head">
                             <strong>SL.</strong>
-                            <strong>Title</strong>
-                            <strong>Contents</strong>
+                            <strong>Name</strong>
+                            <strong>Email</strong>
                             <strong style="text-align: center;">Actions</strong>
                         </div>
 
                         <div class="tbl-body">
-                            <?php if(topics() != null) { foreach(topics() as $item) : ?>
+                            <?php foreach($data as $item) : ?>
                             <div class="tbl-row">
                                 <p>
                                     <?php echo $item['id']; ?>
                                 </p>
                                 <p>
-                                <?php echo substr(strip_tags($item['title']), 0, 60); ?>
+                                <?php echo $item['first_name'] . " " . $item['last_name']; ?>
                                 </p>
                                 <p>
-                                    <?php echo substr(strip_tags($item['content']), 0, 60); ?>
+                                    <?php echo $item['email']; ?>
                                 </p>
 
                                 <div class="actions">
                                     <div class="actions-btn">
-                                        <a href="add-topic.php?id=<?php echo $item['id']; ?> " class="btn btn-green"><i class="far fa-edit"></i></a>
-                                        <a href="topics.php?delete=<?php echo $item['id']; ?>" class="btn btn-red"><i class="fas fa-trash"></i></a>
+                                        <p><a href="student-details.php?id=<?php echo $item['id']; ?>" style="text-decoration: none">Details...</a></p>
                                     </div>
                                 </div>
                             </div>
-                            <?php endforeach; }?>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

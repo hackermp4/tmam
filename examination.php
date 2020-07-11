@@ -80,6 +80,8 @@
     </div>
     <!-- banner end -->
 
+
+<div class="container">
     <!-- question box -->
     <div class="question-box">
 
@@ -87,7 +89,7 @@
             <?php $c = 1; foreach($questions as $ques) : ?>
             <li class="question-tab" data-id="<?php echo $ques['id']; ?>">
                 <div class="question">
-                    <?php echo $ques['question']; ?>
+                    <h4 class="q-title"><?php echo $ques['question']; ?></h4>
                 </div>
 
                 <?php retriveChoice($ques['id']) ?>
@@ -146,13 +148,13 @@
             <p class="counts">
                 <span id="total-ans">0 </span>
                 /
-                <span id="total-ques"> 0</span>
+                <span id="total-ques"></span>
             </p>
             <button class="button btn-disable btn-result">Result</button>
         </div>
     </div>
     <!-- question box end -->
-
+</div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script>
@@ -171,7 +173,6 @@
             function activateResultButton(){
                 let questions = $('.question-tab');
                 let answered  = JSON.parse( localStorage.getItem('questions') );
-                console.log(answered);
                 if( answered != null){
                     if( questions.length == answered.length ){
                         $('.btn-result').removeClass('btn-disable');
@@ -222,8 +223,13 @@
 
             function totalQuestionCount(){
                 let questionCount = document.querySelectorAll('.question-tab');
-                questionCount.length > 9 ? $('#total-ques').text(questionCount.length) :
-                $('#total-ques').text('0'+questionCount.length)
+                if(questionCount.length == 0){
+                    $('#total-ques').text('0');
+                }else{
+                    questionCount.length > 9 ? $('#total-ques').text(questionCount.length) :
+                    $('#total-ques').text('0'+questionCount.length)
+                }
+                
             }
 
             totalQuestionCount();
@@ -265,8 +271,7 @@
             $('.btn-result').click(function(){
                 if(activateResultButton() == true){
                     let getTheAnswers = JSON.parse(localStorage.getItem('questions'));
-                    console.log(getTheAnswers);
-
+                  
                     $.ajax({
                         url: 'exam_process.php',
                         method: 'POST',
@@ -274,7 +279,6 @@
                             answers:getTheAnswers
                         },
                         success:function(response){
-                            console.log(response);
                             localStorage.removeItem('questions');
                             window.location.href = 'result.php';
                         }
